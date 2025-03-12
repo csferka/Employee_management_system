@@ -30,7 +30,9 @@ def selection(event):
         salaryEntry.insert(0,row[5])
 
 
-def clear():
+def clear(value=False):
+    if value:
+        tree.selection_remove(tree.focus())
     idEntry.delete(0,END)
     phoneEntry.delete(0,END)
     salaryEntry.delete(0,END)
@@ -50,7 +52,7 @@ def add_employee():
         messagebox.showerror(title="Error",message="Id already exists")
 
     else:
-        database.insert(nameEntry.get(),phoneEntry.get(),Rolecombo.get(),Gendercombo.get(),salaryEntry.get(),idEntry.get())
+        database.insert(idEntry.get(),nameEntry.get(),phoneEntry.get(),Rolecombo.get(),Gendercombo.get(),salaryEntry.get())
         treeview_data()
         clear()
         messagebox.showinfo("Success",'Data is added')
@@ -164,7 +166,7 @@ scrollbar.grid(row=1,column=4,sticky='ns')
 buttonFrame=CTkFrame(window,fg_color="#161C30")
 buttonFrame.grid(row=2,column=0,columnspan=2)
 
-newButton=CTkButton(buttonFrame,text='New Employee',font=('arial',15,'bold'),width=160,corner_radius=15)
+newButton=CTkButton(buttonFrame,text='New Employee',font=('arial',15,'bold'),width=160,corner_radius=15,command=lambda: clear(True))
 newButton.grid(row=0,column=0,pady=5,padx=10)
 
 addButton=CTkButton(buttonFrame,text='Add Employee',font=('arial',15,'bold'),width=160,corner_radius=15,command=add_employee)

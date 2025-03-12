@@ -5,7 +5,7 @@ def connect_database():
     global conn
 
     try:
-        conn=pymysql.connect(host="localhost",user="root",password='csfera04')
+        conn=pymysql.connect(host="localhost",user="root",password='Feruzbekpirmatov04$')
         mycursor=conn.cursor()
     except:
         messagebox.showerror(title="Error",message="please try again")
@@ -24,7 +24,7 @@ def connect_database():
             )
         """)
 def insert(id,name,phone,role,gender,salary):
-    mycursor.execute("INSERT INTO data values(%s,%s,%s,%s,%s,%s)",(name,phone,role,gender,salary,id))
+    mycursor.execute("INSERT INTO data values(%s,%s,%s,%s,%s,%s)",(id,name,phone,role,gender,salary))
     conn.commit()
 def id_exists(id):
     mycursor.execute("SELECT COUNT(*) FROM data WHERE Id = %s",id)
@@ -34,8 +34,8 @@ def fetch_employees():
     mycursor.execute('SELECT * from data')
     result=mycursor.fetchall()
     return result
-def update(id,name,phone,role,gender,salary):
-    mycursor.execute('UPDATE data SET name=%s,phone=%s,role=%s,gender=%s,salary=%s Where id=%s',(id,name,phone,role,gender,salary))
+def update(id,new_name,new_phone,new_role,new_gender,new_salary):
+    mycursor.execute('UPDATE data SET name=%s,phone=%s,role=%s,gender=%s,salary=%s Where id=%s',(new_name,new_phone,new_role,new_gender,new_salary,id))
     conn.commit()
 
 connect_database()
