@@ -5,6 +5,10 @@ import database
 
 
 #functions
+def show_all():
+    treeview_data()
+    searchEntry.delete(0,END)
+    searchcombo.set("Search By")
 def search_employee():
     if searchEntry.get()=="":
         messagebox.showerror("Error","Enter value to search")
@@ -154,7 +158,7 @@ searchEntry.grid(row=0, column=1,padx=15)  # Changed row from 6 → 5
 searchButton=CTkButton(rightFrame,text='Search',border_color='blue',cursor='hand2',command=search_employee)
 searchButton.grid(row=0,column=2,padx=15)
 
-showButton=CTkButton(rightFrame,text='Show All',border_color='blue',cursor='hand2')
+showButton=CTkButton(rightFrame,text='Show All',border_color='blue',cursor='hand2',command=show_all)
 showButton.grid(row=0,column=3,padx=15)
 
 tree=ttk.Treeview(rightFrame,height=18)
