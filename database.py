@@ -45,4 +45,8 @@ def search(option,value):
     mycursor.execute(f'SELECT * from data where {option}=%s',value)
     result=mycursor.fetchall()
     return result
+def deleteall_records():
+    mycursor.execute('TRUNCATE TABLE data')
+    conn.commit()
+
 connect_database()

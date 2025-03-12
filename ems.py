@@ -5,6 +5,14 @@ import database
 
 
 #functions
+def delete_all():
+    result=messagebox.askyesno("Confirm","Do you really want to delete all records?")
+    if result:
+        database.deleteall_records()
+    else:
+        pass
+
+
 def show_all():
     treeview_data()
     searchEntry.delete(0,END)
@@ -205,7 +213,7 @@ deleteButton=CTkButton(buttonFrame,text='Delete Employee',font=('arial',15,'bold
 deleteButton.grid(row=0,column=3)
 
 
-deleteallButton=CTkButton(buttonFrame,text='Delete All',font=('arial',15,'bold'),width=160,corner_radius=15)
+deleteallButton=CTkButton(buttonFrame,text='Delete All',font=('arial',15,'bold'),width=160,corner_radius=15,command=delete_all)
 deleteallButton.grid(row=0,column=4,padx=10)
 
 treeview_data()
