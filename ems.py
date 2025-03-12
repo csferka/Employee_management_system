@@ -193,7 +193,7 @@ style=ttk.Style()
 style.configure('Treeview.Heading',font=('arial',18,'bold'))
 style.configure('Treeview',font=('arial',15,'bold'),background='#161C30',foreground='white')
 
-scrollbar=ttk.Scrollbar(rightFrame,orient=VERTICAL)
+scrollbar=ttk.Scrollbar(rightFrame,orient=VERTICAL,command=tree.yview)
 scrollbar.grid(row=1,column=4,sticky='ns')
 
 
