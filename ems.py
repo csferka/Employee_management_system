@@ -5,6 +5,17 @@ import database
 
 
 #functions
+def search_employee():
+    if searchEntry.get()=="":
+        messagebox.showerror("Error","Enter value to search")
+    elif searchcombo.get()=='Search By':
+        messagebox.showerror("Error","Please select an option")
+    else:
+        searchdata=database.search(searchcombo.get(),searchEntry.get())
+        tree.delete(*tree.get_children())
+        for employee in searchdata:
+            tree.insert('',END,values=employee)
+
 
 def delete_employee():
     selected_item=tree.selection()
@@ -140,7 +151,7 @@ searchcombo.grid(row=0, column=0,padx=15)  # Changed row from 5 → 4
 searchEntry = CTkEntry(rightFrame)
 searchEntry.grid(row=0, column=1,padx=15)  # Changed row from 6 → 5
 
-searchButton=CTkButton(rightFrame,text='Search',border_color='blue',cursor='hand2')
+searchButton=CTkButton(rightFrame,text='Search',border_color='blue',cursor='hand2',command=search_employee)
 searchButton.grid(row=0,column=2,padx=15)
 
 showButton=CTkButton(rightFrame,text='Show All',border_color='blue',cursor='hand2')

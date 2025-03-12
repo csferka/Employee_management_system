@@ -41,4 +41,8 @@ def delete(id):
     mycursor.execute('DELETE FROM data where id=%s',id)
     conn.commit()
 
+def search(option,value):
+    mycursor.execute(f'SELECT * from data where {option}=%s',value)
+    result=mycursor.fetchall()
+    return result
 connect_database()
