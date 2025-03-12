@@ -6,6 +6,17 @@ import database
 
 #functions
 
+def delete_employee():
+    selected_item=tree.selection()
+    if not selected_item:
+        messagebox.showerror("Error","Items not selected to delete")
+    else:
+        database.delete(idEntry.get())
+        treeview_data()
+        clear()
+        messagebox.showinfo("Success","Data is deleted")
+
+
 def employee_update():
     selected_item=tree.selection()
     if not selected_item:
@@ -175,7 +186,7 @@ addButton.grid(row=0,column=1,pady=5,padx=10)
 updateButton=CTkButton(buttonFrame,text='Update Employee',font=('arial',15,'bold'),width=160,corner_radius=15,command=employee_update)
 updateButton.grid(row=0,column=2,padx=10)
 
-deleteButton=CTkButton(buttonFrame,text='Delete Employee',font=('arial',15,'bold'),width=160,corner_radius=15)
+deleteButton=CTkButton(buttonFrame,text='Delete Employee',font=('arial',15,'bold'),width=160,corner_radius=15,command=delete_employee)
 deleteButton.grid(row=0,column=3)
 
 
