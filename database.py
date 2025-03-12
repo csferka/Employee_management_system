@@ -5,7 +5,7 @@ def connect_database():
     global conn
 
     try:
-        conn=pymysql.connect(host="localhost",user="root",password='Feruzbekpirmatov04$')
+        conn=pymysql.connect(host="name_of_your host",user="root",password='Password')
         mycursor=conn.cursor()
     except:
         messagebox.showerror(title="Error",message="please try again")
